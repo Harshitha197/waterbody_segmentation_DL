@@ -6,7 +6,7 @@ The dataset and methods are based on the detailed analysis documented in the pro
 
 ---
 
-## 🌍 Project Motivation
+## Project Motivation
 
 Water body extraction plays a crucial role in:
 
@@ -18,7 +18,7 @@ Deep learning enables accurate, scalable, and automated pixel-level segmentation
 
 ---
 
-## 🛰️ Data Acquisition
+## Data Acquisition
 
 - **Satellite Source:** Sentinel-2 (ESA)  
 - **Band Selection:**  
@@ -30,16 +30,16 @@ Deep learning enables accurate, scalable, and automated pixel-level segmentation
 
 ---
 
-## 🧹 Data Preprocessing Pipeline
+##  Data Preprocessing Pipeline
 
-### ✅ 1. **Patch Extraction**
+### 1. **Patch Extraction**
 - Extracted 512×512 patches from large TIFF images using a sliding window.  
 - Removed patches containing **NaN values** in any band.  
 - **Total curated patches:** **4,260**  =
 
 ---
 
-### ✅ 2. **False Color Composite**
+### 2. **False Color Composite**
 Created composites using:
 - **Red:** Band 8  
 - **Green:** Band 11  
@@ -47,7 +47,7 @@ Created composites using:
 with normalization to 0–255 for visualization.  =
 ---
 
-### ✅ 3. **Mask Generation (NDWI + Filtering)**
+### 3. **Mask Generation (NDWI + Filtering)**
 - Computed **NDWI** for each patch  
 - Applied **intensity + spectral filtering**:
   - Dark NIR (bottom 5%)  
@@ -58,7 +58,7 @@ with normalization to 0–255 for visualization.  =
 
 ---
 
-### ✅ 4. **Morphological Cleanup**
+### 4. **Morphological Cleanup**
 Performed:
 - Small-object removal (<100 px)  
 - Binary closing & opening with disk-shaped kernels  
@@ -66,7 +66,7 @@ Performed:
 
 ---
 
-## 📦 Dataset Summary
+## Dataset Summary
 
 | Component       | Count |
 |----------------|--------|
@@ -78,7 +78,7 @@ Performed:
 
 ---
 
-## 🧠 Model Architecture
+## Model Architecture
 
 The model is based on **U-Net**, a popular convolutional encoder–decoder architecture for semantic segmentation.
 
@@ -90,7 +90,7 @@ The model is based on **U-Net**, a popular convolutional encoder–decoder archi
 - Learning Rate Scheduler: ReduceLROnPlateau  
 ---
 
-## ⚙️ Training Setup
+## Training Setup
 
 During each epoch, the following metrics were computed for **both training and validation**:
 
@@ -101,7 +101,7 @@ During each epoch, the following metrics were computed for **both training and v
 
 ---
 
-## 📈 Training Curves
+## Training Curves
 
 The following trends were observed from the plots:
 
@@ -112,18 +112,15 @@ The following trends were observed from the plots:
 
 ---
 
-## 🧪 Results & Test Performance
+## Results & Test Performance
 
 Sample predictions show accurate segmentation across various regions with different terrain complexities.  
 
-### 📌 Key Test Metrics:
+### Key Test Metrics:
 - **Pixel Accuracy:** ~98%  
 - **IoU:** 0.60–0.68  
 - **Dice Score:** 0.70–0.74  
 - **Precision:** ~1.00 (perfect water detection with few false positives)  
 - **Recall:** ~0.88–0.99 (strong ability to detect water pixels)
 
----
-
-## 🗂️ Project Structure
 
